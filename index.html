@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Coffee Cove - Soft mornings start here. Premium coffee shop serving handcrafted espresso, lattes, and cold brews in a warm, inviting atmosphere.">
+    <meta name="keywords" content="coffee shop, espresso, latte, cappuccino, cold brew, Coffee Cove, best coffee">
+    <meta name="author" content="Coffee Cove">
+    <title>kelly's Cafe</title>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/x-icon" href="logo/Coffee Shop Logo.png">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Internal CSS -->
+    <style>
+    
+        :root {
+            --coffee-deep: #2E1F1A;       /* Deepest espresso */
+            --coffee-dark: #3E2723;        /* Rich espresso brown */
+            --coffee-medium: #5D4037;      /* Warm coffee brown */
+            --coffee-light: #8D6E63;       /* Soft brown */
+            --nude: #D7CCC8;               /* Soft nude/beige */
+            --nude-light: #EFE9E4;         /* Light nude */
+            --cream: #FDF9F5;              /* Warm creamy white */
+            --cream-dark: #F5F0E8;         /* Darker cream */
+            --white: #FFFFFF;              /* Pure white */
+            --accent-gold: #C8A97E;        /* Warm gold accent */
+            --accent-gold-light: #E8D5B5;  /* Light gold */
+            --text-dark: #2C2C2C;
+            --text-soft: #6B5B4F;
+            --shadow-sm: 0 4px 20px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+            --shadow-xl: 0 30px 60px rgba(0,0,0,0.15);
+            --transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --transition-fast: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--nude);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--coffee-medium);
+            border-radius: 10px;
+        }
+        
+        /* ========================================
+           BUTTON STYLES
+           ======================================== */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--coffee-medium), var(--coffee-deep));
+            transition: left 0.5s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+        
+        .btn-primary-custom:hover::before {
+            left: 0;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            color: var(--white);
+        }
+        
+        .btn-outline-custom {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-outline-custom:hover {
+            background-color: var(--white);
+            color: var(--coffee-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-gold), #B8956A);
+            color: var(--coffee-dark);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            color: var(--coffee-dark);
+        }
+        
+        /* ========================================
+           NAVIGATION BAR - GLASS EFFECT
+           ======================================== */
+        .navbar {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 0;
+            transition: var(--transition-fast);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255,255,255,0.98);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--coffee-dark) !important;
+            letter-spacing: -0.5px;
+            transition: var(--transition-fast);
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.02);
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-gold);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-soft) !important;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 8px 0 !important;
+            margin: 0 12px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--coffee-light));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--coffee-dark) !important;
+        }
+        
+        .btn-nav-order {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white) !important;
+            padding: 8px 24px !important;
+            border-radius: 50px;
+            margin-left: 8px;
+            transition: var(--transition-fast);
+        }
+        
+        .btn-nav-order:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            color: var(--white) !important;
+        }
+        
+        .btn-nav-order::after {
+            display: none;
+        }
+        
+        /* ========================================
+           HERO SECTION - PREMIUM
+           ======================================== */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(135deg, rgba(46,31,26,0.88) 0%, rgba(62,39,35,0.82) 100%),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            isolation: isolate;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(200,169,126,0.15), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        
+        .hero-tagline::before,
+        .hero-tagline::after {
+            content: '✦';
+            opacity: 0.6;
+            margin: 0 12px;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        
+        /* ========================================
+           SECTION DIVIDER
+           ======================================== */
+        .section-divider {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .coffee-bean-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+        
+        .coffee-bean-icon i {
+            font-size: 1.2rem;
+        }
+        
+        .coffee-bean-icon .line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+        
+        /* ========================================
+           FEATURED DRINKS SECTION
+           ======================================== */
+        .featured-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--coffee-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--coffee-light));
+            border-radius: 3px;
+        }
+        
+        .section-title p {
+            color: var(--text-soft);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        .drink-card {
+            background: var(--white);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+            position: relative;
+        }
+        
+        .drink-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--coffee-light));
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+        
+        .drink-card:hover::before {
+            opacity: 1;
+        }
+        
+        .drink-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .drink-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .drink-img {
+            height: 270px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        .drink-card:hover .drink-img {
+            transform: scale(1.08);
+        }
+        
+        .drink-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .drink-card:hover .drink-overlay {
+            transform: translateY(0);
+        }
+        
+        .quick-view {
+            background: var(--accent-gold);
+            color: var(--coffee-dark);
+            border: none;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .quick-view:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .drink-info {
+            padding: 1.8rem;
+            text-align: center;
+        }
+        
+        .drink-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--coffee-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .drink-description {
+            color: var(--text-soft);
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .drink-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .drink-price small {
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: var(--text-soft);
+        }
+        
+        .btn-buy {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .btn-buy:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Category Badge */
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--nude), var(--cream-dark));
+            color: var(--coffee-dark);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-badge i {
+            color: var(--accent-gold);
+        }
+        
+        /* Hot & Iced Sections */
+        .hot-coffee-section,
+        .iced-coffee-section {
+            padding: 80px 0;
+        }
+        
+        .hot-coffee-section {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+        }
+        
+        .iced-coffee-section {
+            background: linear-gradient(135deg, var(--cream-dark) 0%, var(--white) 100%);
+            position: relative;
+        }
+        
+        .iced-coffee-section::before {
+            content: '❄️';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.03;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
+        }
+        
+        /* ========================================
+           ABOUT PREVIEW - PREMIUM
+           ======================================== */
+        .about-preview {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--coffee-deep) 0%, var(--coffee-dark) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-preview::before {
+            content: '☕';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.03;
+            bottom: -80px;
+            right: -80px;
+            pointer-events: none;
+        }
+        
+        .about-preview h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .about-preview p {
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.08);
+            padding: 15px 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-fast);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ========================================
+           NEWSLETTER SECTION
+           ======================================== */
+        .newsletter {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--nude), var(--cream));
+            text-align: center;
+            position: relative;
+        }
+        
+        .newsletter-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 50px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .newsletter h2 {
+            color: var(--coffee-dark);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 22px;
+            border: 1px solid var(--nude);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            transition: var(--transition-fast);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(200,169,126,0.2);
+        }
+        
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #2E1F1A, #241712);
+            color: #D4A373;
+            padding: 70px 0 25px;
+        }
+        
+        .footer h3, .footer h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+        }
+        
+        .footer a {
+            color: #D4A373;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer a:hover {
+            color: var(--accent-gold);
+            transform: translateX(3px);
+            display: inline-block;
+        }
+        
+        .footer i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        
+        .social-icons a:hover i {
+            color: var(--coffee-dark);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        /* ========================================
+           FLOATING ORDER BUTTON
+           ======================================== */
+        .float-order {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .float-order:hover {
+            background: var(--accent-gold);
+            transform: scale(1.1);
+            color: var(--coffee-dark);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(200,169,126,0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(200,169,126,0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(200,169,126,0);
+            }
+        }
+        
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .animate-scale {
+            animation: scaleIn 0.5s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            .about-preview h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-tagline {
+                font-size: 1rem;
+            }
+            .hero-tagline::before,
+            .hero-tagline::after {
+                margin: 0 6px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .about-stats {
+                justify-content: center;
+            }
+            .newsletter-card {
+                padding: 35px 25px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .footer .row > div {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .drink-info h3 {
+                font-size: 1.3rem;
+            }
+            .stat-item {
+                padding: 10px 18px;
+            }
+            .stat-number {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Modal Styles */
+        .premium-modal .modal-content {
+            border-radius: 28px;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .premium-modal .modal-header {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 20px 25px;
+        }
+        
+        .premium-modal .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+        
+        .premium-modal .modal-body {
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo/Coffee Shop Logo.png" height="55px" width="auto" alt="Kelly's Cafe Logo" class="logo-img me-2">
+                <span>kelly's <span>Cafe</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">Support</a>
+                    </li>
+                      <li class="nav-item"><a class="nav-link active" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item">
+                        <a class="btn-nav-order" href="order.html">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kelly's cafe</h1>
+                <div class="hero-tagline">soft mornings start here</div>
+                <p>Handcrafted coffee made with love. From rich espressos to creamy lattes, every cup tells a story.</p>
+                <div class="hero-buttons">
+                    <a href="menu.html" class="btn-outline-custom">Explore Menu</a>
+                    <a href="order.html" class="btn-primary-custom">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="coffee-bean-icon">
+            <span class="line"></span>
+            <i class="fas fa-mug-hot"></i>
+            <i class="fas fa-heart" style="font-size: 0.8rem;"></i>
+            <i class="fas fa-coffee"></i>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <!-- Hot Coffee Section -->
+    <section class="hot-coffee-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="category-badge"><i class="fas fa-fire"></i> Hot & Fresh</span>
+                <h2>Hot Coffee Selection</h2>
+                <p>Rich, aromatic, and perfectly brewed for your perfect morning</p>
+            </div>
+            <div class="row g-4">
+                <!-- Espresso -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/espresso.avif" alt="Espresso" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="espresso">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Espresso</h3>
+                            <p class="drink-description">A rich and bold coffee shot made with finely ground espresso coffee beans.</p>
+                            <p class="drink-price"> P120 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Americano -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/americano.avif" alt="Americano" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="americano">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Americano</h3>
+                            <p class="drink-description">Smooth espresso blended with hot water for a lighter, yet rich flavor.</p>
+                            <p class="drink-price"> P140 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Latte -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/latte.avif" alt="Latte" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="latte">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Latte</h3>
+                            <p class="drink-description">Creamy coffee drink made with espresso and steamed milk, finished with light foam.</p>
+                            <p class="drink-price"> P160 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mocha -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/mocha.avif" alt="Mocha" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="mocha">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Mocha</h3>
+                            <p class="drink-description">A sweet chocolate-flavored coffee with espresso, milk, and rich chocolate.</p>
+                            <p class="drink-price"> P180 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cappuccino -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/cappuccino.avif" alt="Cappuccino" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="cappuccino">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Cappuccino</h3>
+                            <p class="drink-description">A classic espresso drink topped with steamed milk and thick, creamy foam.</p>
+                            <p class="drink-price"> P170 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iced Coffee Section -->
+    <section class="iced-coffee-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="category-badge"><i class="fas fa-snowflake"></i> Cold & Refreshing</span>
+                <h2>Iced Coffee Selection</h2>
+                <p>Chilled, bold, and perfectly refreshing for warm days</p>
+            </div>
+            <div class="row g-4">
+                <!-- Iced Vanilla Latte -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/Iced Vanilla Latte.avif" alt="Iced Vanilla Latte" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="vanilla-latte">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Iced Vanilla Latte</h3>
+                            <p class="drink-description">Refreshing iced coffee made with espresso, creamy milk, vanilla syrup, and ice.</p>
+                            <p class="drink-price"> P190 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Iced Mocha -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/Iced Mocha.avif" alt="Iced Mocha" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="iced-mocha">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Iced Mocha</h3>
+                            <p class="drink-description">Chilled espresso blended with chocolate and milk for a smooth, refreshing chocolate coffee.</p>
+                            <p class="drink-price"> P200 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Iced Caramel Macchiato -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/Iced Caramel Macchiato.avif" alt="Iced Caramel Macchiato" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="caramel-macchiato">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Iced Caramel Macchiato</h3>
+                            <p class="drink-description">Layers of espresso, milk, vanilla, and caramel served over ice for a sweet coffee experience.</p>
+                            <p class="drink-price"> P210 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cold Brew -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="drink-card">
+                        <div class="drink-img-wrapper">
+                            <img src="img/Cold Brew Coffee.avif" alt="Cold Brew" class="drink-img">
+                            <div class="drink-overlay">
+                                <button class="quick-view" data-bs-toggle="modal" data-bs-target="#drinkModal" data-drink="cold-brew">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="drink-info">
+                            <h3>Cold Brew Coffee</h3>
+                            <p class="drink-description">Coffee served cold for a bold, smooth flavor with less acidity.</p>
+                            <p class="drink-price"> P180 <small>/cup</small></p>
+                            <button class="btn-buy" onclick="window.location.href='order.html'">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2>A Place Where Coffee Meets Comfort</h2>
+                    <p>At Kelly's Cafe, we believe that every great day starts with a great cup of coffee. Our passion for quality beans, expert brewing, and warm hospitality creates an experience that feels like home.</p>
+                    <p>Whether you need a morning pick-me-up or an afternoon escape, our cozy corner is waiting for you. Each bean is carefully sourced from sustainable farms, roasted to perfection, and brewed with precision.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Signature Blends</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Customer Rating</div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn-gold mt-3 d-inline-block">Learn Our Story →</a>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600" alt="Coffee Cove Interior" class="img-fluid rounded-4 shadow-lg" style="border-radius: 28px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-card" data-aos="zoom-in">
+                <h2>Stay Brewed & Updated</h2>
+                <p>Subscribe for exclusive offers, new arrivals, and coffee inspiration</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3>Kelly's Cafe</h3>
+                    <p class="small">Soft mornings start here.</p>
+                    <p class="small">Handcrafted coffee served with warmth and love. Every cup tells a story.</p>
+                </div>
+                <div class="col-md-2">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html">Home</a></p>
+                    <p><a href="menu.html">Menu</a></p>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="contact.html">Contact</a></p>
+                    <p><a href="support.html">Support</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Visit Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Gaborone</p>
+                    <p><i class="fas fa-phone"></i> +267 71 234 567</p>
+                    <p><i class="fas fa-envelope"></i> hello@coffeecove.co.bw</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 7AM - 8PM</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0 small">&copy; 2026 Coffee Cove. All rights reserved. | Soft mornings start here. ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Order Button -->
+    <a href="order.html" class="float-order">
+        <i class="fas fa-mug-hot"></i>
+    </a>
+
+    <!-- Drink Modal -->
+    <div class="modal fade premium-modal" id="drinkModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="drinkModalTitle">Drink Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="drinkModalBody">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-outline-custom" style="border-color: var(--coffee-dark); color: var(--coffee-dark);" data-bs-dismiss="modal">Close</button>
+                    <a href="order.html" class="btn-primary-custom" style="padding: 10px 28px;">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Active Page Highlighting
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            if (currentPage === 'index.html' && (linkHref === 'index.html' || linkHref === '/')) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Drink data for modal
+        const drinkData = {
+            espresso: { name: 'Espresso', desc: 'A rich and bold coffee shot made with finely ground espresso coffee beans. Served in a demitasse cup with a smooth crema layer.', calories: '~5 cal', caffeine: '~75mg' },
+            americano: { name: 'Americano', desc: 'Smooth espresso blended with hot water for a lighter, yet rich flavor. Perfect for those who enjoy a longer coffee experience.', calories: '~10 cal', caffeine: '~75mg' },
+            latte: { name: 'Latte', desc: 'Creamy coffee drink made with espresso and steamed milk, finished with a light layer of foam. Velvety smooth and comforting.', calories: '~180 cal', caffeine: '~75mg' },
+            mocha: { name: 'Mocha', desc: 'A sweet chocolate-flavored coffee with espresso, milk, and rich chocolate. Topped with whipped cream for extra indulgence.', calories: '~250 cal', caffeine: '~75mg' },
+            cappuccino: { name: 'Cappuccino', desc: 'A classic espresso drink topped with steamed milk and thick, creamy foam. Perfect balance of espresso, milk, and foam.', calories: '~120 cal', caffeine: '~75mg' },
+            'vanilla-latte': { name: 'Iced Vanilla Latte', desc: 'Refreshing iced coffee made with espresso, creamy milk, vanilla syrup, and ice. Sweet, smooth, and perfectly chilled.', calories: '~200 cal', caffeine: '~75mg' },
+            'iced-mocha': { name: 'Iced Mocha', desc: 'Chilled espresso blended with chocolate and milk for a smooth, refreshing chocolate coffee experience.', calories: '~260 cal', caffeine: '~75mg' },
+            'caramel-macchiato': { name: 'Iced Caramel Macchiato', desc: 'Layers of espresso, milk, vanilla, and caramel served over ice for a sweet and creamy coffee experience.', calories: '~220 cal', caffeine: '~75mg' },
+            'cold-brew': { name: 'Cold Brew Coffee', desc: 'Coffee served cold for a bold, smooth flavor with less acidity. Steeped for 12+ hours for maximum smoothness.', calories: '~5 cal', caffeine: '~150mg' }
+        };
+        
+        // Modal population
+        const drinkModal = document.getElementById('drinkModal');
+        if (drinkModal) {
+            drinkModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const drink = button.getAttribute('data-drink');
+                const data = drinkData[drink];
+                const modalTitle = document.getElementById('drinkModalTitle');
+                const modalBody = document.getElementById('drinkModalBody');
+                
+                if (data && modalTitle && modalBody) {
+                    modalTitle.textContent = data.name;
+                    modalBody.innerHTML = `
+                        <p class="text-soft">${data.desc}</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-muted">🔥 Calories</small>
+                                <p class="fw-semibold">${data.calories}</p>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">⚡ Caffeine</small>
+                                <p class="fw-semibold">${data.caffeine}</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-light mt-3" style="background: var(--nude); border: none; border-radius: 16px;">
+                            <i class="fas fa-tag"></i> Price: <strong>${document.querySelector(`[data-drink="${drink}"]`).closest('.drink-card')?.querySelector('.drink-price')?.textContent || 'Check menu'}</strong>
+                        </div>
+                    `;
+                }
+            });
+        }
+        
+        // Newsletter Form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('☕ Thank you for subscribing! Welcome to the Coffee Cove family. Your first coffee is on us!');
+                    this.reset();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

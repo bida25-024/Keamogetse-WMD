@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Share your experience at Kelly's Cafe. Your feedback helps us serve you better with quality coffee and service.">
+    <meta name="keywords" content="feedback, review, coffee shop feedback, Kelly's Cafe, customer review">
+    <meta name="author" content="Kelly's Cafe">
+    <title>Feedback | Kelly's Cafe</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Internal CSS -->
+    <style>
+        /* ========================================
+           KELLY'S CAFE - FEEDBACK PAGE
+           Colors: Coffee Brown | Cream | Gold | Nude
+           ======================================== */
+        
+        :root {
+            --coffee-dark: #3E2723;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --accent-gold: #C8A97E;
+            --cream: #FDF9F5;
+            --cream-dark: #F5F0E8;
+            --nude: #D7CCC8;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-soft: #6B5B4F;
+            --success: #4CAF50;
+            --error: #e74c3c;
+            --warning: #FF9800;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.1);
+            --transition: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--nude);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--coffee-medium);
+            border-radius: 10px;
+        }
+        
+        /* ========================================
+           BUTTON STYLES
+           ======================================== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, var(--coffee-medium), var(--coffee-dark));
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--coffee-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* ========================================
+           NAVIGATION BAR
+           ======================================== */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 0;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255,255,255,0.98);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--coffee-dark) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-gold);
+        }
+        
+        .logo-img {
+            height: 45px;
+            width: auto;
+            transition: var(--transition);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-soft) !important;
+            transition: var(--transition);
+            position: relative;
+            margin: 0 12px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--coffee-light));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--coffee-dark) !important;
+        }
+        
+        .btn-nav-order {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white) !important;
+            padding: 8px 24px !important;
+            border-radius: 50px;
+            margin-left: 8px;
+        }
+        
+        .btn-nav-order:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* ========================================
+           PAGE HERO
+           ======================================== */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(62,39,35,0.88) 0%, rgba(93,64,55,0.85) 100%),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-hero p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb {
+            background: transparent;
+            justify-content: center;
+        }
+        
+        .breadcrumb-item a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--white);
+        }
+        
+        /* ========================================
+           STATS SECTION
+           ======================================== */
+        .stats-section {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        /* ========================================
+           RATING SECTION
+           ======================================== */
+        .rating-section {
+            padding: 60px 0 40px;
+        }
+        
+        .rating-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .big-rating {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stars-large {
+            font-size: 1rem;
+            color: #FFD700;
+            margin: 10px 0;
+        }
+        
+        .rating-bars {
+            margin-top: 20px;
+        }
+        
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .rating-label {
+            width: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .progress-bar-custom {
+            flex: 1;
+            height: 6px;
+            background: var(--nude);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+        
+        .rating-percent {
+            width: 40px;
+            font-size: 0.7rem;
+            color: var(--text-soft);
+        }
+        
+        /* ========================================
+           TESTIMONIALS SECTION
+           ======================================== */
+        .testimonials-section {
+            padding: 40px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--coffee-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--coffee-light));
+        }
+        
+        .section-title p {
+            color: var(--text-soft);
+            margin-top: 10px;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+        
+        .testimonial-text {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--coffee-dark);
+            font-size: 0.8rem;
+        }
+        
+        .testimonial-drink {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            margin-top: 5px;
+        }
+        
+        /* ========================================
+           FEEDBACK FORM SECTION
+           ======================================== */
+        .form-section {
+            padding: 60px 0;
+            background: var(--cream-dark);
+        }
+        
+        .form-wrapper {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 45px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-wrapper h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--coffee-dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 8px;
+        }
+        
+        .form-group .required {
+            color: var(--error);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid var(--nude);
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--accent-gold);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        /* Star Rating Input */
+        .rating-input-group {
+            margin-bottom: 20px;
+        }
+        
+        .star-rating-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .star-rating-input input {
+            display: none;
+        }
+        
+        .star-rating-input label {
+            font-size: 1.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .star-rating-input label:hover,
+        .star-rating-input label:hover ~ label,
+        .star-rating-input input:checked ~ label {
+            color: #FFD700;
+        }
+        
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            text-transform: none;
+            cursor: pointer;
+        }
+        
+        .radio-group input {
+            width: auto;
+            margin: 0;
+            accent-color: var(--accent-gold);
+        }
+        
+        /* Checkbox */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        
+        .checkbox-wrapper input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent-gold);
+        }
+        
+        .checkbox-wrapper span {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+        
+        /* Submit Button */
+        .btn-submit {
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* ========================================
+           BENEFITS SECTION
+           ======================================== */
+        .benefits-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 25px;
+        }
+        
+        .benefit-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            background: var(--accent-gold);
+            color: var(--white);
+        }
+        
+        .benefit-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #2E1F1A, #241712);
+            color: #D4A373;
+            padding: 60px 0 20px;
+        }
+        
+        .footer h3, .footer h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+        }
+        
+        .footer a {
+            color: #D4A373;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .footer i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        .social-icons a:hover i {
+            color: var(--coffee-dark);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.7rem;
+        }
+        
+        /* ========================================
+           NOTIFICATION TOAST
+           ======================================== */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            z-index: 10000;
+            animation: slideInRight 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            font-size: 0.85rem;
+        }
+        
+        .notification-toast.error {
+            background: var(--error);
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* ========================================
+           FLOATING ORDER BUTTON
+           ======================================== */
+        .float-order {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--coffee-dark), var(--coffee-medium));
+            color: var(--white);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 999;
+            text-decoration: none;
+        }
+        
+        .float-order:hover {
+            background: var(--accent-gold);
+            transform: scale(1.1);
+            color: var(--coffee-dark);
+        }
+        
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            .form-wrapper {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 50px 0;
+            }
+            .stats-section {
+                margin-top: -20px;
+            }
+            .rating-card {
+                padding: 25px;
+            }
+            .big-rating {
+                font-size: 2.5rem;
+            }
+            .star-rating-input label {
+                font-size: 1.3rem;
+            }
+            .radio-group {
+                gap: 15px;
+            }
+            .footer .row > div {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo/Coffee Shop Logo.png" height="55" width="auto" alt="Kelly's Cafe Logo" class="logo-img me-2">
+                <span>kelly's <span>Cafe</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="btn-nav-order" href="order.html">Order Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Your Feedback Matters</h1>
+            <p>Help us brew a better experience for you</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">4.8</div>
+                        <div class="stars-large" style="font-size: 0.7rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="stat-label">OVERALL RATING</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">HAPPY CUSTOMERS</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">WOULD RECOMMEND</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">2019</div>
+                        <div class="stat-label">SINCE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Section -->
+    <section class="rating-section">
+        <div class="container">
+            <div class="rating-card">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="big-rating">4.8</div>
+                        <div class="stars-large">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="small text-muted">Based on 500+ customer reviews</div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="rating-bars">
+                            <div class="rating-row">
+                                <span class="rating-label">5 ★</span>
+                                <div class="progress-bar-custom"><div class="progress-fill" style="width: 78%"></div></div>
+                                <span class="rating-percent">78%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">4 ★</span>
+                                <div class="progress-bar-custom"><div class="progress-fill" style="width: 15%"></div></div>
+                                <span class="rating-percent">15%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">3 ★</span>
+                                <div class="progress-bar-custom"><div class="progress-fill" style="width: 4%"></div></div>
+                                <span class="rating-percent">4%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">2 ★</span>
+                                <div class="progress-bar-custom"><div class="progress-fill" style="width: 2%"></div></div>
+                                <span class="rating-percent">2%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">1 ★</span>
+                                <div class="progress-bar-custom"><div class="progress-fill" style="width: 1%"></div></div>
+                                <span class="rating-percent">1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from coffee lovers</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The best latte I've ever had! The atmosphere is cozy and the staff is incredibly friendly. Highly recommend the Signature Latte!"</p>
+                        <div class="testimonial-author">— Sarah M.</div>
+                        <div class="testimonial-drink">☕ Signature Latte</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Soft mornings start here is right! Their cold brew is smooth and bold. Perfect spot for remote work. Love the vibe!"</p>
+                        <div class="testimonial-author">— James T.</div>
+                        <div class="testimonial-drink">🧊 Cold Brew</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Finally a cafe that understands good coffee! The caramel macchiato is divine. Will definitely come back!"</p>
+                        <div class="testimonial-author">— Maria R.</div>
+                        <div class="testimonial-drink">☕ Caramel Macchiato</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <h2>Share Your Experience</h2>
+                <p class="text-muted mb-4">We'd love to hear what you think about your visit</p>
+                
+                <form id="feedbackForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Full Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="fullname" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone Number (Optional)</label>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Favorite Drink</label>
+                                <select class="form-control" id="drink">
+                                    <option value="">Select a drink</option>
+                                    <option value="espresso">Espresso</option>
+                                    <option value="latte">Latte</option>
+                                    <option value="cappuccino">Cappuccino</option>
+                                    <option value="mocha">Mocha</option>
+                                    <option value="coldbrew">Cold Brew</option>
+                                    <option value="signature">Signature Latte</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="rating-input-group">
+                                <label>Your Rating <span class="required">*</span></label>
+                                <div class="star-rating-input">
+                                    <input type="radio" id="star5" name="rating" value="5" required>
+                                    <label for="star5"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1"><i class="fas fa-star"></i></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Your Feedback <span class="required">*</span></label>
+                                <textarea class="form-control" id="message" rows="4" required placeholder="Tell us about your experience with our coffee, service, and atmosphere..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quality Rating <span class="required">*</span></label>
+                                <select class="form-control" id="quality" required>
+                                    <option value="">Select rating</option>
+                                    <option value="excellent">Excellent (5)</option>
+                                    <option value="good">Good (4)</option>
+                                    <option value="average">Average (3)</option>
+                                    <option value="poor">Poor (2)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Service Rating <span class="required">*</span></label>
+                                <select class="form-control" id="service" required>
+                                    <option value="">Select rating</option>
+                                    <option value="excellent">Excellent (5)</option>
+                                    <option value="good">Good (4)</option>
+                                    <option value="average">Average (3)</option>
+                                    <option value="poor">Poor (2)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Would you recommend us? <span class="required">*</span></label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="recommend" value="yes" required> Yes, absolutely!</label>
+                                    <label><input type="radio" name="recommend" value="maybe"> Maybe</label>
+                                    <label><input type="radio" name="recommend" value="no"> No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" id="newsletter"> 
+                                <span>Subscribe to our newsletter for exclusive offers and coffee tips</span>
+                            </label>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" id="consent" required> 
+                                <span>I consent to my feedback being used to improve our services <span class="required">*</span></span>
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn-submit">Submit Feedback →</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-gift"></i></div>
+                        <h4>10% Off Next Order</h4>
+                        <p>Receive a discount code after submitting feedback</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                        <h4>Quick Response</h4>
+                        <p>We read every review within 24 hours</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-heart"></i></div>
+                        <h4>Shape Our Menu</h4>
+                        <p>Your feedback influences new offerings</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-star"></i></div>
+                        <h4>Get Featured</h4>
+                        <p>Top reviews featured on our social media</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3>Kelly's Cafe</h3>
+                    <p class="small">Soft mornings start here.</p>
+                    <p class="small">Handcrafted coffee served with warmth and love. Every cup tells a story.</p>
+                </div>
+                <div class="col-md-2">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html">Home</a></p>
+                    <p><a href="menu.html">Menu</a></p>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="contact.html">Contact</a></p>
+                    <p><a href="support.html">Support</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Visit Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Gaborone</p>
+                    <p><i class="fas fa-phone"></i> +267 71 234 567</p>
+                    <p><i class="fas fa-envelope"></i> hello@kellyscafe.co.bw</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 7AM - 8PM</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0 small">&copy; 2026 Kelly's Cafe. All rights reserved. | Soft mornings start here. ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Order Button -->
+    <a href="order.html" class="float-order">
+        <i class="fas fa-mug-hot"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+        
+        // Active page highlighting
+        const currentPage = window.location.pathname.split('/').pop() || 'feedback.html';
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Notification function
+        function showNotification(message, type) {
+            const existing = document.querySelector('.notification-toast');
+            if (existing) existing.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = `notification-toast ${type}`;
+            toast.innerHTML = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+        
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const message = document.getElementById('message').value.trim();
+            const quality = document.getElementById('quality').value;
+            const service = document.getElementById('service').value;
+            const recommend = document.querySelector('input[name="recommend"]:checked');
+            const consent = document.getElementById('consent').checked;
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            if (!fullname) { isValid = false; errorMessage += '• Please enter your full name\n'; }
+            if (!email) { isValid = false; errorMessage += '• Please enter your email address\n'; }
+            else if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) { isValid = false; errorMessage += '• Please enter a valid email address\n'; }
+            if (!rating) { isValid = false; errorMessage += '• Please select an overall rating\n'; }
+            if (!message) { isValid = false; errorMessage += '• Please enter your feedback message\n'; }
+            if (message.length < 10) { isValid = false; errorMessage += '• Message must be at least 10 characters\n'; }
+            if (!quality) { isValid = false; errorMessage += '• Please rate the coffee quality\n'; }
+            if (!service) { isValid = false; errorMessage += '• Please rate the service quality\n'; }
+            if (!recommend) { isValid = false; errorMessage += '• Please indicate if you would recommend us\n'; }
+            if (!consent) { isValid = false; errorMessage += '• Please consent to our feedback policy\n'; }
+            
+            if (isValid) {
+                showNotification('☕ Thank you for your feedback! Your 10% discount code has been sent to your email.', 'success');
+                this.reset();
+                document.querySelectorAll('.star-rating-input input').forEach(input => input.checked = false);
+            } else {
+                showNotification('Please fix the following errors:\n' + errorMessage, 'error');
+            }
+        });
+    </script>
+</body>
+</html>
